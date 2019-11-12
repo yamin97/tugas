@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SIMPLE</title>
+    </head>
+    <body>
+       <center>
+            <table>
+            <style>
+                table,th, td{
+                    border: 2pt solid blue;
+                    border-collapse: collapse;
+                }
+            </style>
+            <thead>
+                <tr>
+                    <td>nama</td>
+                    <td>image</td>
+                    <td>harga</td>
+                    <td>action</td>
+                </tr>
+            </thead>
+            <tbody  id = "menu"></tbody>
+            </body>
+        </table>
+        <br><br>
+       <p ID=CARTT>cart</p> <br>
+        <table>
+                <style>
+                    table,th, td{
+                        border: 2pt solid blue;
+                        border-collapse: collapse;
+                    }
+                </style>
+                <thead>
+                    <tr>
+                        <td>Jumlah</td>
+                        <td>nama</td>
+                        <td>image</td>
+                        <td>harga</td>
+                        <td>action</td>
+                    </tr>
+                </thead>
+                <tbody  id = "hasil"></tbody>
+                </body>
+            </table>
+            <input type="button" value="Checkout" onclick= "checkout()">
+        
+        <script>
+        class product{
+            constructor(nama,image,harga){
+                this.nama = nama,
+                this.image = image
+                this.harga = harga
+            }
+        }
+        var menu = [
+        new product('iphone','Apple-iPhone-11-Pro-Midnight-Green-frontimage.jpg', 1000 ),
+        new product('oneplus', '51b9Je40UYL._AC_SL1000_.jpg', 2000),
+        new product('samsung', 'https://image-us.samsung.com/SamsungUS/mobile/phones/06102019-new/NEW_Regular_S10_Lockup1_Blue_gallery.jpg?$product-details-jpg$',3000)
+        ]
+        var cart= []
+
+        function printmenu(){
+            var output = ''
+            for(var i=0 ; i<menu.length ; i++){
+                output += `
+                <tr>
+                    <td>${menu[i].nama}</td>
+                    <td><img src = "${menu[i].image}" alt='foto hp' 
+                    width="100px"></td>
+                    <td>${menu[i].harga}</td>
+                    <td><input type = "button" value="add to cart"
+                    onclick= addToCart(${i})></td>
+                </tr> 
+                `
+            }
+            document.getElementById("menu").innerHTML = output
+        }
+        printmenu()
+
+        function printcart(){
+            var output = ''
+            for(var i = 0 ; i<cart.length; i++){
+                output += `
+                <tr>
+                    <td>${i+1}</td>
+                    <td>${cart[i].nama}</td>
+                    <td><img src = "${cart[i].image}" alt='foto hp' 
+                    width="100px"></td>
+                    <td>${cart[i].harga}</td>
+                    <td><input type = "button" value="delete cart"
+                    onclick= "deletecart(${i})"></td>
+                </tr>
+                `
+            }
+            document.getElementById("hasil").innerHTML=output
+        }
+        function addToCart(index){
+        cart.push(menu[index])
+        console.log(cart)
+        printcart()
+        }
+        function deletecart(index){
+            cart.splice(index,1)
+            printcart()
+        }
+        printmenu()
+
+        function checkout(){
+            output = 0
+            for(var i = 0 ; i<cart.length ; i++){
+                output += cart[i].harga
+            }
+            var akhir = 'TOTAL BELANJAAN ANDA : ' + output
+            cart.splice(0,cart.length)
+            document.getElementById("CARTT").innerHTML=akhir
+            printcart()
+        }
+    </script>
+    </center>
+    </body>
+</html>
