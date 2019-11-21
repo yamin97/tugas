@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Courier New",
+    Courier, monospace;
+    background-color: goldenrod;
+}
+
+.box{
+    width: 300px;
+    padding: 40px;
+    border: 1px solid ;
+    background: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.box h1{
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+}
+
+.box input[type = "text"], .box input[type = "password"]{
+    font-family: "Courier New",
+    Courier, monospace;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid goldenrod;
+    padding: 10px;
+    width: 200px;
+    color: black;
+    border-radius: 20px;
+    transition: width 500ms;
+}
+
+.box input[type = "text"]:focus,
+.box input[type = "password"]:focus{
+    width: 300px;
+    background: goldenrod;
+    outline: none;
+}
+
+.box input[type = "button"]{
+    border: 0;
+    background: goldenrod;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid green;
+    padding: 15px;
+    width: 200px;
+    color: black;
+    border-radius: 10px;
+    transition: 500ms;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: "Courier New",
+    Courier, monospace;
+}
+
+.box input[type = "button"]:hover{
+    width: 100px;
+}
